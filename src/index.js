@@ -23,6 +23,6 @@ const notes = [
 ]
 
 ReactDOM.render(
-  <App notes={notes} />,
+  <App notex={notes} />,
   document.getElementById('root')
 )
