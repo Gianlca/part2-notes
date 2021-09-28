@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
 
-export const Persons = ({personsToShow}) => {
+export const Persons = ({ personsToShow, deletePerson }) => {
   return (
     <div>
-      {personsToShow.map(person => <div key={person.name}>{person.name} - {person.number}</div>)}
+      {personsToShow.map((person) => (
+        <div key={person.name}>
+          {person.name} - {person.number}
+          <button onClick={() => deletePerson(person)}>delete</button>
+        </div>
+      ))}
     </div>
-  )
-}
+  );
+};

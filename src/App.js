@@ -1,53 +1,23 @@
-import { useState } from 'react'
-import Note from './components/Note'
-import Phonebook from './components/Phonebook';
+import { Footer } from "./layouts/Footer";
+import { Countries } from "./components/Countries";
+import Notes from "./components/Notes";
+import Phonebook from "./components/Phonebook";
 
-const App = ({notex}) => {
-  const [notes, setnotes] = useState([]);
-  const [newNote, setNewNote] = useState('');
-  const [showAll, setShowAll] = useState(true);
-
-  const addNote = (event) => {
-    event.preventDefault();
-    const noteObject = {
-      content: newNote,
-      data: new Date().toISOString(),
-      important: Math.random() < 0.5,
-      id: notes.length + 1,
-    }
-    setnotes(notes.concat(noteObject));
-    setNewNote('')
-  }
-
-  const handleNoteChange = (event) => setNewNote(event.target.value);
-
-  const notesToShow = showAll ? notes : notes.filter(note => note.important);
-
+const App = ({ notex }) => {
   return (
     <div>
       <h1>Notes</h1>
+      <Notes />
+      <h3>Countries Api</h3>
+      <Countries />
       <div>
-        <button onClick={() => setShowAll(!showAll)}>
-          show {showAll ? 'important' : 'all'}
-        </button>
+        <Phonebook />
       </div>
-      <ul>
-        {notesToShow.map(note => 
-            <Note key={note.id} note={note} />
-        )}
-      </ul>
-      <form onSubmit={addNote}>
-        <input 
-          value={newNote}
-          onChange={handleNoteChange}
-        />
-        <button type="submit">submit</button>
-      </form>
       <div>
-        <Phonebook />    
+        <Footer />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
