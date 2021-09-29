@@ -71,7 +71,7 @@ export default function Phonebook() {
   };
 
   const getPersons = () => {
-    const url = "http://localhost:3001/persons";
+    const url = "http://localhost:3001/api/persons";
     const promise = axios.get(url);
     return promise;
   };
